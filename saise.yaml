@@ -1,0 +1,44 @@
+#Fichier de configuration pour SAISE
+
+#### CONFIGURATION HOTE DISTANT ####
+
+#Répertoire master côté backup (contient toutes les itérations) (ne pas mettre de / à la fin!)
+backupmasterdir: /home/tifauve/testsSAISE
+
+#A propos de ssh
+ssh_destination: rafou.com
+ssh_user: tifauve
+ssh_port: 22
+ssh_key: /home/tifauve/.ssh/id_rsaTifauve.Net
+
+#### CONFIGURATION MACHINE A SAUVEGARDER
+
+#Répertoires à sauvegarder (ne pas mettre de / à la fin!)
+#CES REPERTOIRES NE SERONT PAS CRYPTES !
+dirs2backup:
+    - /home/tifauve/Bureau/Code/INCUBATEUR/SAISE/tests
+
+#Fichiers et répertoires à crypter - les fichiers auront l'extension .crypted
+#attention pour l'instant cela ne fonctionnera pas si les fichiers/répertoires à crypter ne font par partie de dirs2backup
+cryptedDirs2Backup:
+    - /home/tifauve/Bureau/Code/INCUBATEUR/SAISE/tests/UN/crypt1.txt
+    - /home/tifauve/Bureau/Code/INCUBATEUR/SAISE/tests/UN/crypt11.txt
+    - /home/tifauve/Bureau/Code/INCUBATEUR/SAISE/tests/DEUX/crypt2.txt
+    - /home/tifauve/Bureau/Code/INCUBATEUR/SAISE/tests/CRYPT
+
+#cle de cryptage (chemin complet NE PAS PERDRE LA CLE....)
+cryptKey: /home/tifauve/Bureau/Code/INCUBATEUR/SAISE/mykey.priv
+
+#### CONFIGURATION DES SAUVEGARDES
+
+#Nombre d'itérations à conserver
+iterations: 10
+
+#Répertoires et fichiers à ne pas sauvegarder
+#ATTENTION: comme indiqué dans le man de rsync, cela correspond à des motifs (pattern) et non à des répertoires
+excludedDirs:
+    - EXCLUDED
+    - UN/excluded.txt
+   
+####Configuration GUI (libnotify)
+notification: true
